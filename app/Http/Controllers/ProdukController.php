@@ -60,7 +60,7 @@ class ProdukController extends Controller
     /** 
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Produk $produk, $id)
+    public function update(Request $request, $id)
     {
         $produk = Produk::find($id);
         $produk->update($request->all());

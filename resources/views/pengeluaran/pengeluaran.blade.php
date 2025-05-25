@@ -58,7 +58,7 @@ $script = '';
                                     <form action="{{ route('pengeluaran.update',$exp->id_pengeluaran) }}" method="post"
                                         class="needs-validation" novalidate>
                                         @csrf
-                                        @method('post')
+                                        @method('put')
                                         <div class="row">
                                             <div class="col-12">
                                                 <label class="form-label">Keterangan</label>

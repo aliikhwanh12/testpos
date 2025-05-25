@@ -18,8 +18,7 @@ $script = '<script>
 
                 <div class="col-3 d-flex justify-content-center gap-3">
                     <button type="button"
-                        class="btn btn-lg btn-success w-100 d-flex justify-content-center align-items-center gap-2 fs-1"
-                        data-bs-toggle="modal" data-bs-target="#payModal">
+                        class="btn btn-lg btn-success w-100 d-flex justify-content-center align-items-center gap-2 fs-1" id="tmbbyr">
                         Bayar
                     </button>
                 </div>
@@ -197,7 +196,7 @@ $script = '<script>
                                 <td class="text-center">{{$i + 1}}</td>
                                 <td class="text-center">{{$produk->id_produk}}</td>
                                 <td class="text-center">{{$produk->nama}}</td>
-                                <td class="text-center">{{format_uang($produk->harga_beli)}}</td>
+                                <td class="text-center">{{format_uang($produk->harga_jual)}}</td>
                                 <td class="text-center">{{$produk->stok}}</td>
                                 <td class="text-center">
                                     <div class="d-flex align-items-center gap-10 justify-content-center">
@@ -336,6 +335,15 @@ $script = '<script>
                 }
             ]
         });
+
+        document.getElementById("tmbbyr").addEventListener("click", function() {
+            if(table.rows().count() === 0){
+                alert("Masukkan barang terlebih dahulu");
+            } else{
+                $('#payModal').modal('show');
+            }
+        });
+
         $(document).on("input", ".quantity", function () {
             let id_orderjual = $(this).data("id");
             let new_quantity = $(this).val();
@@ -375,14 +383,14 @@ $script = '<script>
             });
 
         $(document).on("click", ".hapus-barang", function () {
-            let id_orderbeli = $(this).data("id");
+            let id_orderjual = $(this).data("id");
 
             $.ajax({
                 url: "{{ route('orderjual.deleteItem') }}",
                 method: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
-                    id_orderbeli: id_orderbeli
+                    id_orderjual: id_orderjual
                 },
                 success: function (response) {
                     if (response.success) {
@@ -424,6 +432,10 @@ $script = '<script>
     });
 
     document.getElementById("hapusSemua").addEventListener("click", function() {
+        if(table.rows().count() === 0){
+            alert("Tidak ada data untuk dihapus!");
+            $('#deleteWarning').modal('hide');
+            } else {
         $.ajax({
         url: "{{ route('orderjual.deleteAll') }}",
         method: "DELETE",
@@ -438,8 +450,10 @@ $script = '<script>
                 alert("Gagal menghapus item!");
             }
         }
+    });}
     });
-    });
+
+
 
     function struk(url, title) {
         popupCenter(url, title, 625, 500);

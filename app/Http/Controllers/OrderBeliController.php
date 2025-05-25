@@ -18,7 +18,7 @@ class OrderBeliController extends Controller
     public function index()
     {
         // Cek apakah sesi id_pembelian sudah ada
-        if (!Session::has('id_pembelian')) {
+        if (!Session::has('id_pembelian') || !Pembelian::where('id_pembelian', Session::get('id_pembelian'))->exists()) {
             // Jika tidak ada, buat transaksi baru
             $pembelian = Pembelian::create([
                 'id_user' => Auth::id(),

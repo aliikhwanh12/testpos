@@ -60,7 +60,7 @@ $script = '';
                                     <form action="{{ route('produk.update',$produk->id_produk) }}" method="post"
                                         class="needs-validation" novalidate>
                                         @csrf
-                                        @method('post')
+                                        @method('put')
                                         <div class="row">
                                             <div class="col-12">
                                                 <label for="id_produk" class="form-label">ID Produk</label>

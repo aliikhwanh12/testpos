@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
     /**
@@ -32,7 +32,7 @@ class UserController extends Controller
         $users = new User();
         $users->name = $request->nama;
         $users->email = $request->email;
-        $users->password = md5($request->password);
+        $users->password = Hash::make($request->password);
         $users->role = $request->role;
         $users->save();
 
@@ -64,7 +64,14 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $users = User::find($id);
+        $users->name = $request->nama;
+        $users->email = $request->email;
+        $users->password = Hash::make($request->password);
+        $users->role = $request->role;
+        $users->save();
+        
+        return redirect()->back()->with("Data pengguna berhasil diubah");
     }
 
     /**
@@ -72,6 +79,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $users = User::find($id);
+        $users->delete();
+
+        return redirect()->back()->with("Data pengguna berhasil dihapus");
     }
 }

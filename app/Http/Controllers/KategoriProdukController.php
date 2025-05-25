@@ -61,7 +61,7 @@ class KategoriProdukController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kategori_Produk $kategori_Produk, $id)
+    public function update(Request $request, $id)
     {
         //$kategori_Produk->update($request->all());
         $kategori_produk = Kategori_Produk::find($id);

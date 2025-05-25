@@ -9,7 +9,6 @@
         "backpack/basset": "*",
         "laravel/framework": "^11.0",
         "laravel/tinker": "^2.9",
-        "laravel/ui": "^4.6",
         "livewire/livewire": "^3.5",
         "symfony/asset": "^7.1",
         "symfony/asset-mapper": "^7.1",

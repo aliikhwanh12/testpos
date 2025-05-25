@@ -18,7 +18,7 @@ class OrderJualController extends Controller
     public function index()
     {
         // Cek apakah sesi id_penjualan sudah ada
-        if (!Session::has('id_penjualan')) {
+        if (!Session::has('id_penjualan') || !Penjualan::where('id_penjualan', Session::get('id_penjualan'))->exists()) {
             // Jika tidak ada, buat transaksi baru
             $penjualan = Penjualan::create([
                 'id_user' => Auth::id(),

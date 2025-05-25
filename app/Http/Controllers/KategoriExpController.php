@@ -59,16 +59,24 @@ class KategoriExpController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kategori_Exp $kategori_Exp)
+    public function update(Request $request, $id)
     {
-        //
+        //$kategori_Produk->update($request->all());
+        $kategori_exp = Kategori_Exp::find($id);
+        $kategori_exp->nama_kategori = $request->nama_kategori;
+        $kategori_exp->save();
+        
+        return redirect()->back()->with("Kategori produk berhasil diubah");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kategori_Exp $kategori_Exp)
+    public function destroy(Kategori_Exp $Kategori_Exp, $id)
     {
-        //
+        $kategori_exp = Kategori_Exp::find($id);
+        $kategori_exp->delete();
+
+        return redirect()->back()->with("Kategori produk berhasil dihapus");
     }
 }

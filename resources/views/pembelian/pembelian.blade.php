@@ -19,7 +19,7 @@ $script = '<script>
                 <div class="col-3 d-flex justify-content-center gap-3">
                     <button type="button"
                         class="btn btn-lg btn-success w-100 d-flex justify-content-center align-items-center gap-2 fs-1"
-                        data-bs-toggle="modal" data-bs-target="#payModal">
+                        id="tmbbyr">
                         Bayar
                     </button>
                 </div>
@@ -399,23 +399,34 @@ $script = '<script>
             }
         }
     });
-
-    document.getElementById("hapusSemua").addEventListener("click", function() {
-        $.ajax({
-        url: "{{ route('orderbeli.deleteAll') }}",
-        method: "DELETE",
-        data: {
-            _token: "{{ csrf_token() }}"
-        },
-        success: function(response) {
-            if (response.success) {
-                alert("Semua item berhasil dihapus!");
-                table.ajax.reload(); // Reload tabel jika menggunakan DataTables
-            } else {
-                alert("Gagal menghapus item!");
+        document.getElementById("tmbbyr").addEventListener("click", function() {
+            if(table.rows().count() === 0){
+                alert("Masukkan barang terlebih dahulu");
+            } else{
+                $('#payModal').modal('show');
             }
+        });
+    document.getElementById("hapusSemua").addEventListener("click", function() {
+        if(table.rows().count() === 0){
+            alert("Tidak ada data untuk dihapus!");
+            $('#deleteWarning').modal('hide');
+        } else {
+            $.ajax({
+            url: "{{ route('orderbeli.deleteAll') }}",
+            method: "DELETE",
+            data: {
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(response) {
+                if (response.success) {
+                    alert("Semua item berhasil dihapus!");
+                    table.ajax.reload(); // Reload tabel jika menggunakan DataTables
+                } else {
+                    alert("Gagal menghapus item!");
+                }
+            }
+            });
         }
-    });
     });
 </script>
 @endpush

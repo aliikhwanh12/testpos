@@ -12,6 +12,7 @@ use App\Http\Controllers\RoleandaccessController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\KategoriExpController;
 use App\Http\Controllers\KategoriProdukController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\OrderBeliController;
 use App\Http\Controllers\OrderJualController;
 use App\Http\Controllers\PembelianController;
@@ -19,6 +20,7 @@ use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\PengeluaranController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashboardController;
 use App\Models\Penjualan;
 
 Route::get('/', function () {
@@ -26,7 +28,7 @@ Route::get('/', function () {
 })->middleware('guest');
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/widget', [HomeController::class, 'widgets'])->name('widgets');
     Route::get('/error', [HomeController::class, 'error1'])->name('error');
     Route::get('/blank', [HomeController::class, 'blankPage'])->name('blankPage');
@@ -67,6 +69,8 @@ Route::prefix('sales')->group(function () {
     Route::post('/history/deleteitem', [PenjualanController::class, 'deleteItem'])->name('riwayatjual.deleteItem');
 });
 
+Route::resource('/laporan', LaporanController::class);
+Route::get('/laporan/data/{awal}/{akhir}', [LaporanController::class, 'data'])->name('laporan.data');
 Route::resource('/manageakun', UserController::class);
 
 
