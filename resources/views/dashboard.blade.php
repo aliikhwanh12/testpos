@@ -10,11 +10,10 @@
 
     <div class="row gy-4">
         <div class="col-12">
-            <div class="card radius-12">
-                <div class="card-body p-16">
+
                     <div class="row gy-4">
                         <div class="col-xxl-3 col-xl-4 col-sm-6">
-                            <div class="px-20 py-16 shadow-none radius-8 h-100 gradient-deep-1 left-line line-bg-primary position-relative overflow-hidden">
+                            <div class="card shadow-none border bg-gradient-start-1 px-20 py-16 radius-8 h-100 gradient-deep-1 left-line line-bg-primary position-relative overflow-hidden">
                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
                                     <div>
                                         <span class="mb-2 fw-medium text-secondary-light text-md">Laba</span>
@@ -28,7 +27,7 @@
                             </div>
                         </div>
                         <div class="col-xxl-3 col-xl-4 col-sm-6">
-                            <div class="px-20 py-16 shadow-none radius-8 h-100 gradient-deep-2 left-line line-bg-lilac position-relative overflow-hidden">
+                            <div class="card shadow-none border bg-gradient-start-2 px-20 py-16 radius-8 h-100 gradient-deep-2 left-line line-bg-lilac position-relative overflow-hidden">
                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
                                     <div>
                                         <span class="mb-2 fw-medium text-secondary-light text-md">Total Pembelian</span>
@@ -43,7 +42,7 @@
                         </div>
                         <div class="col-xxl-3 col-xl-4 col-sm-6">
                             
-                            <div class="px-20 py-16 shadow-none radius-8 h-100 gradient-deep-3 left-line line-bg-success position-relative overflow-hidden">
+                            <div class="card shadow-none border bg-gradient-start-3 px-20 py-16 radius-8 h-100 gradient-deep-3 left-line line-bg-success position-relative overflow-hidden">
                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
                                     <div>
                                         <span class="mb-2 fw-medium text-secondary-light text-md">Total Penjualan</span>
@@ -57,7 +56,7 @@
                             </div>
                         </div>
                         <div class="col-xxl-3 col-xl-4 col-sm-6">
-                            <div class="px-20 py-16 shadow-none radius-8 h-100 gradient-deep-4 left-line line-bg-warning position-relative overflow-hidden">
+                            <div class="card shadow-none border bg-gradient-start-4 px-20 py-16 radius-8 h-100 gradient-deep-4 left-line line-bg-warning position-relative overflow-hidden">
                                 <div class="d-flex flex-wrap align-items-center justify-content-between gap-1 mb-8">
                                     <div>
                                         <span class="mb-2 fw-medium text-secondary-light text-md">Total Pengeluaran</span>
@@ -70,8 +69,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
         </div>
         <div class="col-xxl-8">
             <div class="card h-100">
