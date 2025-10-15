@@ -140,7 +140,7 @@ $script = '';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addModalLabel">Tambah Produk</h1>
+                <h1 class="modal-title fs-5" id="addModalLabel">Tambah Pengeluaran</h1>
             </div>
             <div class="modal-body p-24">
                 <form action="{{ route('pengeluaran.store') }}" method="post" class="needs-validation" novalidate>

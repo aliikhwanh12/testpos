@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @php
-$title='Users Grid';
-$subTitle = 'Users Grid';
+$title='Kelola Akun';
+$subTitle = 'Kelola Akun';
 $script ='<script>
     $(".remove-item-btn").on("click", function () {
         $(this).closest("tr").addClass("d-none")
@@ -56,7 +56,7 @@ $script ='<script>
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="editModalLabel">Tambah Kategori Produk</h1>
+                                    <h1 class="modal-title fs-5" id="editModalLabel">Tambah Akun</h1>
                                 </div>
                                 <div class="modal-body p-24">
                                     <form action="{{ route('manageakun.update', $user->id) }}" method="post"
@@ -100,7 +100,7 @@ $script ='<script>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-center gap-3">
                                                 <button type="button"
-                                                    class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
+                                                    class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8" data-bs-dismiss="modal">
                                                     Cancel
                                                 </button>
                                                 <button type="submit"
@@ -208,7 +208,7 @@ $script ='<script>
                     </div>
                     <div class="d-flex align-items-center justify-content-center gap-3">
                         <button type="button"
-                            class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8">
+                            class="border border-danger-600 bg-hover-danger-200 text-danger-600 text-md px-56 py-11 radius-8" data-bs-dismiss="modal">
                             Cancel
                         </button>
                         <button type="submit"
@@ -241,7 +241,7 @@ $script ='<script>
             topStart: ['search', 'buttons'],
             topEnd: {
                 div: {
-                    html: '<button type="button" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#addModal"><iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>Tambah Kategori Produk</button>'
+                    html: '<button type="button" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#addModal"><iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>Tambah Akun</button>'
                 }
             }
         },

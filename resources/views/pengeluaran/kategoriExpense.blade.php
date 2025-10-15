@@ -1,7 +1,7 @@
 @extends('layout.layout')
 @php
-$title='Kategori Produk';
-$subTitle = 'Kategori Produk';
+$title='Kategori Pengeluaran';
+$subTitle = 'Kategori Pengeluaran';
 $script = '';
 @endphp
 
@@ -46,7 +46,7 @@ $script = '';
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="editModalLabel">Tambah Kategori Produk</h1>
+                                <h1 class="modal-title fs-5" id="editModalLabel">Tambah Kategori Pengeluaran</h1>
                             </div>
                             <div class="modal-body p-24">
                                 <form action="{{ route('kategoriexp.update', $catexp->id_kategoriExp) }}"
@@ -56,9 +56,9 @@ $script = '';
                                     <div class="row">
                                         <div class="col-12">
                                             <label for="nama_kategori" class="form-label">Nama Kategori
-                                                Produk</label>
+                                                Pengeluaran</label>
                                             <input type="text" id="nama_kategori" name="nama_kategori"
-                                                class="form-control" placeholder="Masukkan Kategori Produk"
+                                                class="form-control" placeholder="Masukkan Kategori Pengeluaran"
                                                 value="{{$catexp->nama_kategori}}" required>
                                             <div class="invalid-feedback">Please fill out this field.</div>
                                         </div>
@@ -118,7 +118,7 @@ $script = '';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addModalLabel">Tambah Kategori Produk</h1>
+                <h1 class="modal-title fs-5" id="addModalLabel">Tambah Kategori Pengeluaran</h1>
             </div>
             <div class="modal-body p-24">
                 <form action="{{ route('kategoriexp.store') }}" method="post" class="needs-validation" novalidate>
@@ -126,9 +126,9 @@ $script = '';
                     @method('post')
                     <div class="row">
                         <div class="col-12">
-                            <label for="nama_kategori" class="form-label">Nama Kategori Produk</label>
+                            <label for="nama_kategori" class="form-label">Nama Kategori Pengeluaran</label>
                             <input type="text" id="nama_kategori" name="nama_kategori" class="form-control"
-                                placeholder="Masukkan Kategori Produk" required>
+                                placeholder="Masukkan Kategori Pengeluaran" required>
                             <div class="invalid-feedback">Please fill out this field.</div>
                         </div>
                         <div class="d-flex align-items-center justify-content-center gap-3 mt-24">
@@ -174,7 +174,7 @@ $script = '';
             ,
             topEnd: {
                 div: {
-                html: '<button type="button" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#addModal"><iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>Tambah Kategori Produk</button>'
+                html: '<button type="button" class="btn btn-primary text-sm btn-sm px-12 py-12 radius-8 d-flex align-items-center gap-2" data-bs-toggle="modal" data-bs-target="#addModal"><iconify-icon icon="ic:baseline-plus" class="icon text-xl line-height-1"></iconify-icon>Tambah Kategori Pengeluaran</button>'
             }
             }
         },

@@ -62,11 +62,9 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $produk = Produk::find($id);
+        $produk = Produk::findOrFail($id);
         $produk->update($request->all());
-        $produk->save();
-                
-        return redirect()->back()->with("Produk berhasil diubah");
+        return redirect()->back()->with('success', 'Produk berhasil diubah');
     }
 
     /**
