@@ -100,8 +100,7 @@ Nah sekarang harusnya websitenya sudah berjalan. Buka URL yang diberikan (127.0.
 
 
 ## Tugas
-### Coba bikin fitur untuk menambahkan kategori produk menggunakan post kaya kemarin.
-#### Building for source
+### Coba tambahkan backend dari fitur tambah kategori produk di views yang telah disediakan. Controller dan Routenya menyesuaikan kalian saja asalkan rapi kodenya.
 
 > [!TIP]
 > SILAHKAN GUNAKAN AI SEBAIK DAN SECERMAT MUNGKIN. JANGAN ASAL COPAS TAPI PELAJARI KODENYA JUGA. JANGAN SAMPAI KODE DARI AI MENGUBAH TAMPILANNYA.
