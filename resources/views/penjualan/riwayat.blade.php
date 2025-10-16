@@ -71,7 +71,7 @@ $script = '';
             let id_penjualan = $(this).data("id");
             if (confirm('Yakin ingin menghapus data terpilih?')) {
                 $.ajax({
-                    url: "{{ route('riwayatjual.deleteItem') }}",
+                    url: "#",
                     method: "POST",
                     data: {
                         _token: "{{ csrf_token() }}",
@@ -89,7 +89,7 @@ $script = '';
                 });
             }
         });
-        let orderJualIndexURL = "{{ route('orderjual.index') }}";
+        let orderJualIndexURL = "#";
         table = $('#dataTable').DataTable({
             paging: true, // Aktifkan pagination
             autoWidth: true, // Sesuaikan lebar kolom secara otomatis
@@ -114,7 +114,7 @@ $script = '';
             },
             responsive: true,
             ajax: {
-                url: "{{ route('riwayatjual.data') }}"
+                url: "#"
             },
             type: "GET", // Mengambil data dari Controller
             columns: [{
