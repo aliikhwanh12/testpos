@@ -19,7 +19,7 @@ Route::prefix('produk')->group(function () {
 
 Route::prefix('sales')->group(function () {
     Route::get('/transaksi', function(){
-        return view('produk.kategoriProduk');
+        return view('penjualan.penjualan');
     })->name('orderjual.index');
     Route::get('/riwayat', function(){
         return view('penjualan.riwayat');

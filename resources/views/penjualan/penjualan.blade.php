@@ -191,34 +191,6 @@ $script = '<script>
                             </tr>
                         </thead>
                         <tbody id="table">
-                            @foreach($produk as $i => $produk)
-                            <tr>
-                                <td class="text-center">{{$i + 1}}</td>
-                                <td class="text-center">{{$produk->id}}</td>
-                                <td class="text-center">{{$produk->nama}}</td>
-                                <td class="text-center">{{format_uang($produk->harga_jual)}}</td>
-                                <td class="text-center">{{$produk->stok}}</td>
-                                <td class="text-center">
-                                    <div class="d-flex align-items-center gap-10 justify-content-center">
-                                        @if ($produk->stok <= 0)
-                                        <button type="button"
-                                            class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                            data-bs-toggle="modal" onclick="alert('Stok Produk Habis')"
-                                            data-bs-dismiss="modal">
-                                            <iconify-icon icon="streamline:delete-1-solid" class="menu-icon"></iconify-icon>
-                                        </button>
-                                        @else
-                                        <button type="button"
-                                            class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                            data-bs-toggle="modal" onclick="pilihProduk('{{ $produk->id}}')"
-                                            data-bs-dismiss="modal">
-                                            <iconify-icon icon="icon-park-solid:correct" class="menu-icon"></iconify-icon>
-                                        </button>
-                                        @endif
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
                         </tbody>
                     </table>
                 </div>
