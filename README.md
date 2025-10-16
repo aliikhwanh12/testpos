@@ -1,8 +1,12 @@
 ## Konfigurasi di komputer kalian
-Paling pertama kalian lakukan adalah hapus folder testpos yang ada di folder kode/kodingan kalian. **(kalau bisa, backup bagian migration dan modelnya ditempat lain terlebih dahulu. Agar kalian tidak mikir ulang migration dan modelnya nanti)**
+Paling pertama kalian lakukan adalah hapus folder testpos yang ada di folder kode/kodingan kalian.
+
+> [!WARNING]
+> Kalau bisa, backup bagian migration dan modelnya ditempat lain terlebih dahulu. Agar kalian tidak mikir ulang migration dan modelnya nanti
+
 Jika sudah dihapus, kalian buka VSCode kalian dan buka terminal baru. **Pastikan terminal kalian berada di folder Kode (misalnya PS D:/KODE>).** 
 
-> [!NOTE]
+> [!TIP]
 > Jika kalian berada di selain folder kodingan (misalnya D:/KODE), ke tab File diatas kiri, trus pilih New Window. Kalo udah kebuka lagi vscodenya, klik Open Folder habis itu pergi ke folder kodingannya (misalnya D:/KODE). Kalau sudah berada di folder kode, pencet Select Folder. Setelah itu kalian bikin terminal baru dan lanjut ke step selanjutnya.
 
 Masukkan kode dibawah ini di terminal tersebut:
@@ -53,26 +57,33 @@ DB_USERNAME=root
 DB_PASSWORD=
 DB_COLLATION=utf8mb4_unicode_ci
 ```
-Jika sudah disinkronkan, sekarang kalian tambah migration dan model di folder testpos sebelumnya. Caranya kalian buka Powershell sebelumnya, lalu masukkan kode seperti dibawah ini **(PASTIKAN URUTANNYA BENAR DARI KIRI KE KANAN DI GAMBAR ERD YANG SAYA KASIH DI PPT)** :
+Jika sudah disinkronkan, sekarang kalian tambah migration dan model di folder testpos sebelumnya. Caranya kalian buka Powershell sebelumnya, lalu masukkan kode seperti dibawah ini  :
 
 ```sh
 php artisan make:model KategoriProduk -mc
 php artisan make:model Produk -mc
 php artisan make:model Penjualan -mc
 php artisan make:model OrderJual -mc
-
 ```
+
+> [!CAUTION]
+> PASTIKAN URUTANNYA BENAR DARI KIRI KE KANAN DI GAMBAR ERD YANG SAYA KASIH DI PPT
+
 Setelah itu, kalian masukkan migration dan model kalian di folder sebelumnya. 
-**PASTIKAN HAPUS 's' NYA DI TIAP NAMA TABEL (Misalnya table 'penjualans' jadi 'penjualan')**
-**TIAP FOREIGN KEY PAKE $table->foreignId()->constrained()->onDelete('cascade');**
-Jika sudah diisi migrationnya, sekarang kalian nyalakan XAMMP lalu pergi ke localhost/phpmyadmin. Setelah itu kita akan buat database baru yang namanya **'kasir'**. Jangan lupa pilih utf8mb4_unicode_ci bukan general di samping input nama databasenya. 
-Jika sudah dibuat database 'kasir' ya, balik lagi ke vscode tadi.
+
+> [!CAUTION]
+>1. PASTIKAN HAPUS 's' NYA DI TIAP NAMA TABEL (Misalnya table 'penjualans' jadi 'penjualan')**
+>2. TIAP FOREIGN KEY PAKAI $table->foreignId()->constrained()->onDelete('cascade');
+
+Jika sudah diisi migrationnya, sekarang kalian nyalakan **XAMMP** lalu pergi ke **localhost/phpmyadmin**. Setelah itu kita akan buat database baru yang namanya **'kasir'**. Jangan lupa pilih **utf8mb4_unicode_ci** bukan general di samping input nama databasenya. 
+Jika sudah dibuat database 'kasir', balik lagi ke vscode tadi.
 Buka powershell sebelumnya lalu jalankan perintah :
 
 ```sh
 php artisan migrate:fresh
 
 ```
+
 Jika sudah berhasil, masukkan kode dibawah di Powershell :
 
 ```sh
@@ -91,3 +102,6 @@ Nah sekarang harusnya websitenya sudah berjalan. Buka URL yang diberikan (127.0.
 ## Tugas
 ### Coba bikin fitur untuk menambahkan kategori produk menggunakan post kaya kemarin.
 #### Building for source
+
+> [!TIP]
+> SILAHKAN GUNAKAN AI SEBAIK DAN SECERMAT MUNGKIN. JANGAN ASAL COPAS TAPI PELAJARI KODENYA JUGA. JANGAN SAMPAI KODE DARI AI MENGUBAH TAMPILANNYA.
