@@ -22,7 +22,7 @@ class PenjualanController extends Controller
  
     public function struk($id)
     {
-        $penjualan = Penjualan::where('id_penjualan', $id)->first();
+        $penjualan = Penjualan::where('id', $id)->first();
         if (! $penjualan) {
             abort(404);
         }
@@ -50,8 +50,8 @@ class PenjualanController extends Controller
 
         return DataTables::of($detail)
             ->addIndexColumn() 
-            ->addColumn('produk.id_produk', function ($detail) {
-                return $detail->produk->id_produk;
+            ->addColumn('produk.id', function ($detail) {
+                return $detail->produk->id;
             })
             ->addColumn('produk.nama', function ($detail) {
                 return $detail->produk->nama;
@@ -70,7 +70,7 @@ class PenjualanController extends Controller
 
     public function data()
     {
-        $penjualan = Penjualan::with('user')->orderBy('id_penjualan', 'desc')->get();
+        $penjualan = Penjualan::with('user')->orderBy('id', 'desc')->get();
 
         return DataTables::of($penjualan)
             ->addIndexColumn() 
@@ -82,9 +82,6 @@ class PenjualanController extends Controller
             })
             ->addColumn('total_harga', function ($penjualan) {
                 return 'Rp. '. format_uang($penjualan->total_harga);
-            })
-            ->addColumn('kasir', function ($penjualan) {
-                return $penjualan->user->name;
             })
             ->addColumn('status', function ($penjualan) {
                 $status = $penjualan->status ?? '';
@@ -99,30 +96,22 @@ class PenjualanController extends Controller
                 <div class="d-flex align-items-center gap-10 justify-content-center">
                     <button type="button"
                         class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                        onclick="showDetail(`'. route('riwayatjual.show', $penjualan->id_penjualan) .'`)">
+                        onclick="showDetail(`'. route('riwayatjual.show', $penjualan->id) .'`)">
                         <iconify-icon icon="mdi:eye-outline" class="menu-icon"></iconify-icon>
                     </button>
                     <button type="button"
                         class="bg-info-focus bg-hover-info-200 text-info-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                        data-bs-toggle="modal" data-bs-target="" onclick="struk(`/sales/struk/'.$penjualan->id_penjualan.'`, `struk`)">
+                        data-bs-toggle="modal" data-bs-target="" onclick="struk(`/sales/struk/'.$penjualan->id.'`, `struk`)">
                         <iconify-icon icon="material-symbols:print-outline-rounded" class="menu-icon"></iconify-icon>
                     </button>
                     <button type="button"
                         class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle hapus-barang"
-                        data-id="' . $penjualan->id_penjualan . '">
+                        data-id="' . $penjualan->id . '">
                         <iconify-icon icon="material-symbols:delete-outline" class="menu-icon"></iconify-icon>
                     </button>
                 </div>
                 ';
             })
-            // ->addColumn('aksi', function ($penjualan) {
-            //     return '
-            //     <div class="btn-group">
-            //         <button onclick="showDetail(`'. route('penjualan.show', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-info btn-flat"><i class="fa fa-eye"></i></button>
-            //         <button onclick="deleteData(`'. route('penjualan.destroy', $penjualan->id_penjualan) .'`)" class="btn btn-xs btn-danger btn-flat"><i class="fa fa-trash"></i></button>
-            //     </div>
-            //     ';
-            // })
             ->rawColumns(['aksi', 'status'])
             ->make(true);
     }

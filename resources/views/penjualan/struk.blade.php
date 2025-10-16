@@ -63,7 +63,6 @@
     <br>
     <div>
         <p style="float: left;">{{ date('d-m-Y') }}</p>
-        <p style="float: right">{{ strtoupper(auth()->user()->name) }}</p>
     </div>
     <div class="clear-both" style="clear: both;"></div>
     <p>No: {{ $penjualan->id_penjualan }}</p>

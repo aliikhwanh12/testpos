@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('order_jual', function (Blueprint $table) {
-            $table->increments('id_orderJual');
-            $table->integer('id_penjualan');
+            $table->id();
+            $table->foreignId('id_penjualan')->constrained('penjualan')->onDelete('cascade');
             $table->char('id_produk', length: 13);
             $table->integer('quantity');
             $table->integer('subtotal');

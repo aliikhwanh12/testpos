@@ -9,11 +9,10 @@ class Order_Jual extends Model
 {
     use HasFactory;
     protected $table = 'order_jual';
-    protected $primaryKey = 'id_orderJual';
     protected $guarded = [];
      
     public function produk()
     {
-        return $this->belongsTo(Produk::class, 'id_produk', 'id_produk');
+        return $this->belongsTo(Produk::class, 'id_produk', 'id');
     }
 }

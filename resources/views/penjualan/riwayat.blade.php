@@ -18,7 +18,6 @@ $script = '';
                         <th scope="col" class="text-center">Tanggal</th>
                         <th scope="col" class="text-center">Total Item</th>
                         <th scope="col" class="text-center">Total Harga</th>
-                        <th scope="col" class="text-center">Kasir</th>
                         <th scope="col" class="text-center">Status</th>
                         <th scope="col" class="text-center">Aksi</th>
                     </tr>
@@ -119,8 +118,8 @@ $script = '';
             },
             type: "GET", // Mengambil data dari Controller
             columns: [{
-                    data: 'id_penjualan',
-                    name: 'id_penjualan'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
                     data: 'tanggal',
@@ -135,10 +134,6 @@ $script = '';
                     name: 'total_harga'
                 },
                 {
-                    data: 'kasir',
-                    name: 'kasir'
-                },
-                {
                     data: 'status',
                     name: 'status'
                 },
@@ -151,7 +146,7 @@ $script = '';
             ],
             columnDefs: [{
                 className: 'text-center',
-                targets: [0, 1, 2, 3, 4, 5, 6]
+                targets: [0, 1, 2, 3, 4, 5]
             }, ]
 
         });
@@ -172,8 +167,8 @@ $script = '';
             },
             type: "GET",
             columns: [{
-                    data: 'produk.id_produk',
-                    name: 'produk.id_produk'
+                    data: 'produk.id',
+                    name: 'produk.id'
                 },
                 {
                     data: 'produk.nama',

@@ -194,7 +194,7 @@ $script = '<script>
                             @foreach($produk as $i => $produk)
                             <tr>
                                 <td class="text-center">{{$i + 1}}</td>
-                                <td class="text-center">{{$produk->id_produk}}</td>
+                                <td class="text-center">{{$produk->id}}</td>
                                 <td class="text-center">{{$produk->nama}}</td>
                                 <td class="text-center">{{format_uang($produk->harga_jual)}}</td>
                                 <td class="text-center">{{$produk->stok}}</td>
@@ -210,7 +210,7 @@ $script = '<script>
                                         @else
                                         <button type="button"
                                             class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                            data-bs-toggle="modal" onclick="pilihProduk('{{ $produk->id_produk}}')"
+                                            data-bs-toggle="modal" onclick="pilihProduk('{{ $produk->id}}')"
                                             data-bs-dismiss="modal">
                                             <iconify-icon icon="icon-park-solid:correct" class="menu-icon"></iconify-icon>
                                         </button>
@@ -306,8 +306,8 @@ $script = '<script>
             },
             type: "GET", // Mengambil data dari Controller
             columns: [{
-                    data: 'id_produk',
-                    name: 'id_produk'
+                    data: 'id',
+                    name: 'id'
                 },
                 {
                     data: 'produk.nama',

@@ -26,7 +26,7 @@ $script = '';
                 <tbody id="table">
                     @foreach($produk as $i => $produk)
                     <tr>
-                        <td class="text-center">{{$produk->id_produk}}</td>
+                        <td class="text-center">{{$produk->id}}</td>
                         <td class="text-center">{{$produk->kategori->nama_kategori}}</td>
                         <td class="text-center">{{$produk->nama}}</td>
                         <td class="text-center">{{$produk->stok}}</td>
@@ -36,12 +36,12 @@ $script = '';
                             <div class="d-flex align-items-center gap-10 justify-content-center">
                                 <button type="button"
                                     class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                    data-bs-toggle="modal" data-bs-target="#editModal{{$produk->id_produk}}">
+                                    data-bs-toggle="modal" data-bs-target="#editModal{{$produk->id}}">
                                     <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                                 </button>
                                 <button type="button"
                                     class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                    data-bs-toggle="modal" data-bs-target="#deleteModal{{$produk->id_produk}}">
+                                    data-bs-toggle="modal" data-bs-target="#deleteModal{{$produk->id}}">
                                     <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                                 </button>
                             </div>
@@ -49,7 +49,7 @@ $script = '';
                     </tr>
 
                     <!-- Modal Update -->
-                    <div class="modal fade" id="editModal{{$produk->id_produk}}" tabindex="-1"
+                    <div class="modal fade" id="editModal{{$produk->id}}" tabindex="-1"
                         aria-labelledby="editModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -57,15 +57,15 @@ $script = '';
                                     <h1 class="modal-title fs-5" id="editModalLabel">Tambah Produk</h1>
                                 </div>
                                 <div class="modal-body p-24">
-                                    <form action="{{ route('produk.update',$produk->id_produk) }}" method="post"
+                                    <form action="{{ route('produk.update',$produk->id) }}" method="post"
                                         class="needs-validation" novalidate>
                                         @csrf
                                         @method('put')
                                         <div class="row">
                                             <div class="col-12">
-                                                <label for="id_produk" class="form-label">ID Produk</label>
-                                                <input type="text" id="id_produk" name="id_produk" name="#0"
-                                                    class="form-control" value="{{$produk->id_produk}}"
+                                                <label for="id" class="form-label">ID Produk</label>
+                                                <input type="text" id="id" name="id" name="#0"
+                                                    class="form-control" value="{{$produk->id}}"
                                                     placeholder="Masukkan Kode Produk" maxlength="13" required>
                                             </div>
                                             <div class="col-12">
@@ -122,7 +122,7 @@ $script = '';
                     <!-- Modal Update -->
 
                     <!-- Modal Warning-->
-                    <div class="modal fade" id="deleteModal{{$produk->id_produk}}" data-bs-backdrop="static"
+                    <div class="modal fade" id="deleteModal{{$produk->id}}" data-bs-backdrop="static"
                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -133,7 +133,7 @@ $script = '';
                                     Apakah anda yakin data ingin dihapus?
                                 </div>
                                 <div class="modal-footer">
-                                    <form action="{{ route('produk.destroy', $produk->id_produk) }}" method="post">
+                                    <form action="{{ route('produk.destroy', $produk->id) }}" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="button" class="btn btn-secondary"
@@ -165,8 +165,8 @@ $script = '';
                     @method('post') 
                     <div class="row">
                         <div class="col-12">
-                            <label for="id_produk" class="form-label">ID Produk</label>
-                            <input type="text" id="id_produk" name="id_produk" name="#0" class="form-control"
+                            <label for="id" class="form-label">ID Produk</label>
+                            <input type="text" id="id" name="id" name="#0" class="form-control"
                                 placeholder="Masukkan Kode Produk" maxlength="13" required>
                         </div>
                         <div class="col-12">
@@ -186,8 +186,8 @@ $script = '';
                         <div class="col-12">
                             <label class="form-label">Kategori</label>
                             <select id="id_kategori" name="id_kategori" class="form-control radius-8 form-select" required>
-                                @foreach ($kategori as $key => $item)
-                                <option value="{{$key}}">{{$item}}</option>
+                                @foreach ($kategori as $item)
+                                <option value="{{$item->id}}">{{$item->nama_kategori}}</option>
                                 @endforeach
                             </select>
                         </div>

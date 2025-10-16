@@ -29,19 +29,19 @@ $script = '';
                         <div class="d-flex align-items-center gap-10 justify-content-center">
                             <button type="button"
                                 class="bg-success-focus text-success-600 bg-hover-success-200 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#editModal{{$catprod->id_kategoriProduk}}">
+                                data-bs-toggle="modal" data-bs-target="#editModal{{$catprod->id}}">
                                 <iconify-icon icon="lucide:edit" class="menu-icon"></iconify-icon>
                             </button>
                             <button type="button"
                                 class="bg-danger-focus bg-hover-danger-200 text-danger-600 fw-medium w-40-px h-40-px d-flex justify-content-center align-items-center rounded-circle"
-                                data-bs-toggle="modal" data-bs-target="#deleteModal{{$catprod->id_kategoriProduk}}">
+                                data-bs-toggle="modal" data-bs-target="#deleteModal{{$catprod->id}}">
                                 <iconify-icon icon="fluent:delete-24-regular" class="menu-icon"></iconify-icon>
                             </button>
                         </div>
                     </td>
                 </tr>
                 <!-- Modal Update -->
-                <div class="modal fade" id="editModal{{$catprod->id_kategoriProduk}}" tabindex="-1"
+                <div class="modal fade" id="editModal{{$catprod->id}}" tabindex="-1"
                     aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -49,7 +49,7 @@ $script = '';
                                 <h1 class="modal-title fs-5" id="editModalLabel">Tambah Kategori Produk</h1>
                             </div>
                             <div class="modal-body p-24">
-                                <form action="{{ route('kategoriproduk.update', $catprod->id_kategoriProduk) }}"
+                                <form action="{{ route('kategoriproduk.update', $catprod->id) }}"
                                     method="post" class="needs-validation" novalidate>
                                     @csrf
                                     @method('put')
@@ -82,7 +82,7 @@ $script = '';
                 <!-- Modal Update -->
 
                 <!-- Modal Warning-->
-                <div class="modal fade" id="deleteModal{{$catprod->id_kategoriProduk}}" data-bs-backdrop="static"
+                <div class="modal fade" id="deleteModal{{$catprod->id}}" data-bs-backdrop="static"
                     data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -93,7 +93,7 @@ $script = '';
                                 Apakah anda yakin data ingin dihapus?
                             </div>
                             <div class="modal-footer">
-                                <form action="{{ route('kategoriproduk.destroy', $catprod->id_kategoriProduk) }}"
+                                <form action="{{ route('kategoriproduk.destroy', $catprod->id) }}"
                                     method="post">
                                     @csrf
                                     @method('delete')

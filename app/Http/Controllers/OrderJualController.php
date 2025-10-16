@@ -7,7 +7,6 @@ use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\Penjualan;
-use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 
 class OrderJualController extends Controller
@@ -18,10 +17,9 @@ class OrderJualController extends Controller
     public function index()
     {
         // Cek apakah sesi id_penjualan sudah ada
-        if (!Session::has('id_penjualan') || !Penjualan::where('id_penjualan', Session::get('id_penjualan'))->exists()) {
+        if (!Session::has('id_penjualan') || !Penjualan::where('id', Session::get('id_penjualan'))->exists()) {
             // Jika tidak ada, buat transaksi baru
             $penjualan = Penjualan::create([
-                'id_user' => Auth::id(),
                 'total_item' => 0,
                 'total_harga' => 0,
                 'bayar' => 0,
@@ -33,7 +31,7 @@ class OrderJualController extends Controller
             Session::put('id_penjualan', $penjualan->id_penjualan);
         } else {
             // Jika sudah ada, ambil dari database
-            $penjualan = Penjualan::where('id_penjualan', Session::get('id_penjualan'))->firstOrFail();
+            $penjualan = Penjualan::where('id', Session::get('id_penjualan'))->firstOrFail();
         }
     
         // Ambil data order yang sudah ditambahkan ke transaksi ini
@@ -81,7 +79,7 @@ class OrderJualController extends Controller
 
     // Cek apakah produk sudah ada dalam order
     $existingOrder = Order_Jual::where('id_penjualan', $id_penjualan)
-                                   ->where('id_produk', $request->id_produk)
+                                   ->where('id', $request->id_produk)
                                    ->first();
 
     if ($existingOrder) {
@@ -179,7 +177,7 @@ public function deleteItem(Request $request)
 public function getTotalHarga()
 {
     $id_penjualan = Session::get('id_penjualan');
-    $totalHarga = Penjualan::where('id_penjualan', $id_penjualan)->value('total_harga');
+    $totalHarga = Penjualan::where('id', $id_penjualan)->value('total_harga');
     $id_penjualan = Session::get('id_penjualan');
     return response()->json([
         'total_harga' => $totalHarga ?? 0,
@@ -190,7 +188,7 @@ public function getTotalHarga()
 public function checkout(Request $request)
 {
     $id_penjualan = Session::get('id_penjualan');
-    $penjualan = Penjualan::where('id_penjualan', $id_penjualan);
+    $penjualan = Penjualan::where('id', $id_penjualan);
     $totalHarga = $penjualan->value('total_harga');
     if ($request->bayar < $totalHarga) {
         return redirect()->back()->with('error', 'Jumlah pembayaran kurang dari total penjualan.');

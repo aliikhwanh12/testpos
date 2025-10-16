@@ -25,14 +25,14 @@
                     <div class="dropdown-menu to-top dropdown-menu-sm">
                         <div class="py-12 px-16 radius-8 bg-primary-50 mb-16 d-flex align-items-center justify-content-between gap-2">
                             <div>
-                                <h6 class="text-lg text-primary-light fw-semibold mb-2">{{ auth()->user()->name }}</h6>
-                                <span class="text-secondary-light fw-medium text-sm">{{ auth()->user()->role }}</span>
+                                <h6 class="text-lg text-primary-light fw-semibold mb-2">Admin</h6>
+                                <span class="text-secondary-light fw-medium text-sm">Admin</span>
                             </div>
 
                         </div>
                         <ul class="to-top-list">
                             <li>
-                                <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3" href="{{ route('logout') }}">
+                                <a class="dropdown-item text-black px-0 py-8 hover-bg-transparent hover-text-danger d-flex align-items-center gap-3" href="#">
                                     <iconify-icon icon="lucide:power" class="icon text-xl"></iconify-icon> Log Out
                                 </a>
                             </li>

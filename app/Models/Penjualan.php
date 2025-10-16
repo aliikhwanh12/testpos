@@ -8,7 +8,6 @@ class Penjualan extends Model
 {
     use HasFactory;
     protected $table = 'penjualan';
-    protected $primaryKey = 'id_penjualan';
     protected $guarded = [];
 
     public function user()
